@@ -17,7 +17,7 @@ app.get("/pokemons/:generation", async (request,response) =>{
   
   if("pokemons" in pokeCache &&  pokemonGen === generation){
     console.log("Using Cache")
-    response.send(pokemons)
+    response.setHeader("Access-Control-Allow-Origin","*").send(pokeCache["pokemons"])
   }
   else{
     console.log("Reaching new info")
@@ -25,7 +25,8 @@ app.get("/pokemons/:generation", async (request,response) =>{
     pokemonGen = generation
     console.log(pokemons)
     pokeCache = {pokemons: pokemons}
-    response.send(pokemons)}
+    response.setHeader("Access-Control-Allow-Origin", "*").send(pokemons)
+  }
 });
 
 app.listen(port, () => console.log(`Server listening on ${environment}:${port}`));
