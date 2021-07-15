@@ -20,9 +20,7 @@ module.exports.fetchPokemons = async (generation) => {
   );
 
   pokemonsStoraged(pokemons);
-  console.log(pokemons.length);
-  console.log("*****************");
-  console.log(cleanPokemons.length);
+
   return cleanPokemons.slice(
     getPokeGen(generation).pokeOffset,
     getPokeGen(generation).pokeNum+getPokeGen(generation).pokeOffset
@@ -104,7 +102,6 @@ const getPokeGen = (gen) => {
       pokeRange.pokeOffset = 809;
       break;
   }
-  console.log(pokeRange);
   return pokeRange;
 };
 
