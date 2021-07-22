@@ -29,7 +29,7 @@ module.exports.fetchPokemons = async (generation) => {
 
 const pokemonsStoraged = (pokemons) => {
   pokemons.map((pokemon) => {
-    cleanPokemons[pokemon.id] = {
+    cleanPokemons[pokemon.id-1] = {
       id: pokemon.id,
       name: pokemon.name,
       front_default: pokemon.sprites.front_default,
@@ -38,18 +38,7 @@ const pokemonsStoraged = (pokemons) => {
       moves: pokemon.moves,
     };
   });
-
-  return cleanPokemons.sort((a, b) => {
-    if (a.id > b.id) {
-      return 1;
-    }
-
-    if (a.id < b.id) {
-      return -1;
-    }
-
-    return 0;
-  });
+  
 };
 
 module.exports.pokemonsInCache = (generation) => {
